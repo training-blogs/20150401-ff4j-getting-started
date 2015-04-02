@@ -47,4 +47,18 @@ public class HelloWorldTest {
             fail();
         }
     }
+
+    @Test
+    public void createFeatureDynamically() {
+        // Initialize with empty store
+        FF4j ff4j = new FF4j();
+
+        // Dynamically register new features
+        ff4j.create("f1").enable("f1");
+
+        // Testing
+        assertTrue(ff4j.exist("f1"));
+        assertTrue(ff4j.check("f1"));
+    }
+
 }
