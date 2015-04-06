@@ -13,7 +13,7 @@ public class HelloWorldTest {
     @Test
     public void myFirstFF4JTest() {
         FF4j ff4j = new FF4j("ff4j.xml");
-        assertEquals(2, ff4j.getFeatures().size());
+        assertEquals(3, ff4j.getFeatures().size());
         assertTrue(ff4j.exist("sayHello"));
         assertTrue(ff4j.check("sayHello"));
 
