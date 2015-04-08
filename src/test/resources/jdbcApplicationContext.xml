@@ -1,0 +1,22 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+           http://www.springframework.org/schema/jdbc
+           http://www.springframework.org/schema/jdbc/spring-jdbc.xsd">
+
+    <bean id="ff4j" class="org.ff4j.FF4j">
+        <property name="store" ref="dbStore" />
+    </bean>
+
+    <bean id="dbStore" class="org.ff4j.store.JdbcFeatureStore">
+        <property name="dataSource" ref="ff.jdbc.datasource" />
+    </bean>
+
+    <jdbc:embedded-database id="ff.jdbc.datasource" type="HSQL">
+        <jdbc:script location="classpath:schema-ddl.sql" />
+        <jdbc:script location="classpath:ff-store.sql" />
+    </jdbc:embedded-database>
+
+</beans>
